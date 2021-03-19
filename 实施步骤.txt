@@ -1,0 +1,189 @@
+Alt+Shift+F 代码自动对齐快捷键
+1.添加多类型搜索功能
+2.文件导入
+3.文件导出
+
+<script type="text/javascript">
+    // 百度地图API功能  
+    var myIcon_red = new BMap.Icon("/https://mapapi.qq.com/web/lbs/javascriptGL/demo/img/markerDefault.png", new BMap.Size(25, 23));
+    //var myIcon_blue = new BMap.Icon("/blue.png", new BMap.Size(25, 23));
+
+
+    var map = new BMap.Map("container1");
+    map.centerAndZoom(new BMap.Point(113.7594249, 34.75671296), 35);
+    map.enableScrollWheelZoom(true);
+
+
+    var data_info = {
+        !!$jizhan_sum!!
+    };
+    for (var i = 0; i < data_info.length; i++) {
+        var opts = {
+            //title : '商铺名称：'+ data_info[i]['name'], // 信息窗口标题
+            enableMessage: true //设置允许信息窗发送短息
+        };
+        var marker = new BMap.Marker(new BMap.Point(data_info[i]['lon'], data_info[i]['lat']), {
+            icon: myIcon_red
+        }); // 创建标注
+        var circle = new BMap.Circle(new BMap.Point(data_info[i]['lon'], data_info[i]['lat']), 30, {
+            fillColor: "blue",
+            strokeWeight: 1,
+            fillOpacity: 0.3,
+            strokeOpacity: 0.3
+        });
+
+        var content = '商铺名称：' + data_info[i]['name'] + "<br/>" + '商铺x坐标：' + data_info[i]['lon'] + "<br/>" + '商铺y坐标：' + data_info[i]['lat']; //修改信息窗口中的消息
+
+        map.addOverlay(circle); //添加圆形到地图中
+        map.addOverlay(marker); // 将标注添加到地图中
+        addClickHandler(content, opts, marker);
+    }
+
+    function addClickHandler(content, opts, marker) {
+        marker.addEventListener("click", function(e) {
+            openInfo(content, opts, e)
+        });
+    }
+
+    function openInfo(content, opts, e) {
+        var p = e.target;
+        var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+        var infoWindow = new BMap.InfoWindow(content, opts); // 创建信息窗口对象 
+        map.openInfoWindow(infoWindow, point); //开启信息窗口
+    }
+</script>
+
+
+@extends('layouts.default')
+@section('title','基站地图展示-点击标记弹出信息窗口')
+@section('type')
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=1Xvsb5v2zjuVINWLRcPMzMMxmDnEAjwL"></script>
+<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+@stop
+
+
+@section('content')
+
+
+<div id="container">
+
+</div>
+
+<script type="text/javascript">
+    // 百度地图API功能  
+    var myIcon_red = new BMap.Icon("/https://mapapi.qq.com/web/lbs/javascriptGL/demo/img/markerDefault.png", new BMap.Size(25, 23));
+    //var myIcon_blue = new BMap.Icon("/blue.png", new BMap.Size(25, 23));
+
+
+    var map = new BMap.Map("container1");
+    map.centerAndZoom(new BMap.Point(113.7594249, 34.75671296), 35);
+    map.enableScrollWheelZoom(true);
+
+
+    var data_info = {
+        !!$jizhan_sum!!
+    };
+    for (var i = 0; i < data_info.length; i++) {
+        var opts = {
+            //title : '商铺名称：'+ data_info[i]['name'], // 信息窗口标题
+            enableMessage: true //设置允许信息窗发送短息
+        };
+        var marker = new BMap.Marker(new BMap.Point(data_info[i]['lon'], data_info[i]['lat']), {
+            icon: myIcon_red
+        }); // 创建标注
+        var circle = new BMap.Circle(new BMap.Point(data_info[i]['lon'], data_info[i]['lat']), 30, {
+            fillColor: "blue",
+            strokeWeight: 1,
+            fillOpacity: 0.3,
+            strokeOpacity: 0.3
+        });
+
+        var content = '商铺名称：' + data_info[i]['name'] + "<br/>" + '商铺x坐标：' + data_info[i]['lon'] + "<br/>" + '商铺y坐标：' + data_info[i]['lat']; //修改信息窗口中的消息
+
+        map.addOverlay(circle); //添加圆形到地图中
+        map.addOverlay(marker); // 将标注添加到地图中
+        addClickHandler(content, opts, marker);
+    }
+
+    function addClickHandler(content, opts, marker) {
+        marker.addEventListener("click", function(e) {
+            openInfo(content, opts, e)
+        });
+    }
+
+    function openInfo(content, opts, e) {
+        var p = e.target;
+        var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+        var infoWindow = new BMap.InfoWindow(content, opts); // 创建信息窗口对象 
+        map.openInfoWindow(infoWindow, point); //开启信息窗口
+    }
+</script>
+
+
+@stop
+
+<script>
+    var map = new BMapGL.Map('container');
+    var myIcon_red = new BMap.Icon("/https://mapapi.qq.com/web/lbs/javascriptGL/demo/img/markerDefault.png", new BMap.Size(25, 23));
+    map.centerAndZoom(new BMapGL.Point(113.7594249, 34.75671296), 15);
+    map.enableScrollWheelZoom(true);
+
+    var data_info = {
+        !!$jizhan_sum!!
+    };
+    Document.write(data_info[1]['id']);die;
+    //for (var i = 1; i < data_info.length; i++) {
+        var opts = {
+            enableMessage: true
+        };
+        // 创建添加点标记
+        //var marker = new BMapGL.Marker(new BMapGL.Point(data_info[i]['lon'], data_info[i]['lat']), {
+        //    icon: myIcon_red
+       // });
+        var marker = new BMapGL.Marker(new BMapGL.Point(113.7594249, 34.75671296), {
+            icon: myIcon_red
+        });
+        map.addOverlay(marker);
+        //创建图文信息窗口
+        //var sContent = '基站名称：' + data_info[i]['name'] + "<br/>";
+        var infoWindow = new BMapGL.InfoWindow(sContent);
+        // marker添加点击事件
+        marker.addEventListener('click', function() {
+            this.openInfoWindow(infoWindow);
+            // 图片加载完毕重绘infoWindow
+            document.getElementById('imgDemo').onload = function() {
+                infoWindow.redraw(); // 防止在网速较慢时生成的信息框高度比图片总高度小，导致图片部分被隐藏
+            };
+        });
+   // }
+</script> 
+
+
+    var map = new BMapGL.Map('container');
+    map.centerAndZoom(new BMapGL.Point(113.673024, 34.758452), 15);
+    map.enableScrollWheelZoom(true);
+    var data_info = {!!$jizhan_sum!!};
+    for (var i = 0; i < 100; i++) {
+        var opts = {
+            enableMessage: true
+        };
+        var marker = new BMapGL.Marker(new BMapGL.Point(data_info[i]['lon'], data_info[i]['lat'])); // 创建添加点标记
+        map.addOverlay(marker);
+
+
+        // 创建图文信息窗口
+        var sContent = '基站名称：' + data_info[i]['name'] + "<br/>" +
+            '基站编号：' + data_info[i]['bh'] + "<br/>" +
+            '所属分区：' + data_info[i]['region'] + "<br/>";
+        //addClickHandler(sContent, opts, marker);
+        var infoWindow = new BMapGL.InfoWindow(sContent);
+    // marker添加点击事件
+    marker.addEventListener('click', function () {
+        this.openInfoWindow(infoWindow);
+        // 图片加载完毕重绘infoWindow
+        document.getElementById('imgDemo').onload = function () {
+            infoWindow.redraw(); // 防止在网速较慢时生成的信息框高度比图片总高度小，导致图片部分被隐藏
+        };
+    });
+}
+
