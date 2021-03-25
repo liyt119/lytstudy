@@ -21,6 +21,15 @@ Route::get('/res', 'UsersController@root')->name('res.root');
 Route::get('/res/search', 'UsersController@root');
 Route::post('/res/search', 'UsersController@search')->name('res.search');
 
+//文件导入
+//Route::get('/registers_import', 'RegistersController@import')->name('registers.import');
+
+Route::get('excel/export','RegistersController@export')->name('registers.export');
+Route::get('excel/import','RegistersController@import')->name('registers.import');
+Route::get('import','RegistersController@handle')->name('handle');
+//Route::post('excel/_import','RegistersController@import_handle')->name('registers_import_handle');
+//Route::get('/registers_import_check', 'RegistersController@import_check')->name('registers.import_check');
+
 //Auth::routes();
 // 用户身份验证相关的路由
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');

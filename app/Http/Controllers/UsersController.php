@@ -2,12 +2,21 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Database\QueryException;
+use App\Imports\UsersImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 use Illuminate\Http\Request;
 use App\Models\User;
 
 class UsersController extends Controller
 {
+    public function import()
+    {
+        Excel::import(new UsersImport,'users.xlsx');
+    }
+
+
+
     public function show(User $user)
     {
         $user = User::orderBy('id','desc')->paginate(9);

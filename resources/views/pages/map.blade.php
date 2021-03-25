@@ -35,10 +35,15 @@
     map.enableScrollWheelZoom(true);
     var data_info = {!!$jizhan_sum!!};
     //i<data_info.length
-    for (var i = 0; i < 1000; i++) {
+    for (var i = 0; i < 100; i++) {
         (function(x) {
-            map.centerAndZoom(new BMapGL.Point(113.673024, 34.758452), 15);
+            map.centerAndZoom(new BMapGL.Point(113.673024, 34.758452), 19);
             var marker = new BMapGL.Marker(new BMapGL.Point(data_info[i]['lon'], data_info[i]['lat'])); // 创建添加点标记
+            //开始鼠标滚轮缩放
+            map.enableScrollWheelZoom(true);
+            map.setHeading(64.5);
+	        map.setTilt(73);
+            
             var opts = {
                 width: 300,
                 height: 100,
